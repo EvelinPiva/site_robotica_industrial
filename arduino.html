@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arduino | Portal de Robótica & Indústria 4.0</title>
+<meta name="description" content="Arduino, sensores, programação e três desafios práticos dentro do Portal de Robótica e Indústria 4.0.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/portal.css"> <link rel="icon" type="image/png" href="favicon.png">
+<script src="js/portal.js" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ NAVBAR ═══════════════════════════════════════ -->
+<header class="portal-nav" id="portalNav"><div class="portal-nav__wrap">
+<a class="portal-brand" href="index.html"><strong>PORTAL</strong><span>ROBÓTICA &amp; INDÚSTRIA 4.0</span></a>
+<button class="portal-burger" id="portalBurger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav class="portal-menu" id="portalMenu">
+<a href="index.html">Início</a><a href="sensores.html">Sensores</a><a href="arduino.html">Arduino</a><a href="cartesiano.html">Cartesiano</a><a href="scara.html">SCARA</a><a href="articulado.html">Articulado</a><a href="cilindrico.html">Cilíndrico</a><a href="delta.html">Delta</a><a href="polar.html">Polar</a><a href="colaborativo.html">Cobot</a><a href="simulado.html">Simulado</a>
+</nav></div></header>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="wrap hero__grid">
+    <!-- Lado esquerdo -->
+    <div class="hero__content reveal">
+      <div class="hero__tags">
+        <span>PROJETO PRÁTICO</span>
+        <span class="hero__dot">•</span>
+        <span>ARDUINO • 2026</span>
+      </div>
+
+      <h1 class="hero__title">
+        ARDUINO<br>EM PRÁTICA<span class="purple">.</span>
+      </h1>
+
+      <p class="hero__desc">
+        Três desafios explorando sensores, programação, lógica e automação.
+      </p>
+
+      <div class="hero__btns">
+        <a href="#visao-geral" class="btn btn--solid">Explorar projeto <span class="arr">&rarr;</span></a>
+        <a href="#desafio-01"  class="btn btn--ghost">Ver desafios</a>
+      </div>
+    </div>
+
+    <!-- Lado direito — ilustração editorial -->
+    <div class="hero__visual reveal delay-1" aria-hidden="true">
+      <svg class="hero-svg" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- fundo cinza claro -->
+        <rect width="520" height="520" rx="20" fill="#F5F4F8"/>
+
+        <!-- placa Arduino estilizada -->
+        <rect x="110" y="120" width="300" height="200" rx="10" fill="#fff" stroke="#E0DDE8" stroke-width="1.5"/>
+        <!-- sombra sutil da placa -->
+        <rect x="114" y="124" width="300" height="200" rx="10" fill="none" stroke="#EAE8F0" stroke-width="0.5"/>
+
+        <!-- MCU chip -->
+        <rect x="220" y="180" width="80" height="80" rx="4" fill="#2D2A33"/>
+        <text x="260" y="226" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#9B8FFF" opacity="0.7">MCU</text>
+
+        <!-- Pinos do MCU -->
+        <g stroke="#BFBAC8" stroke-width="1.5">
+          <line x1="220" y1="196" x2="206" y2="196"/>
+          <line x1="220" y1="210" x2="206" y2="210"/>
+          <line x1="220" y1="224" x2="206" y2="224"/>
+          <line x1="220" y1="238" x2="206" y2="238"/>
+          <line x1="300" y1="196" x2="314" y2="196"/>
+          <line x1="300" y1="210" x2="314" y2="210"/>
+          <line x1="300" y1="224" x2="314" y2="224"/>
+          <line x1="300" y1="238" x2="314" y2="238"/>
+        </g>
+
+        <!-- Barras de pinos superiores e inferiores -->
+        <rect x="130" y="130" width="260" height="8" rx="2" fill="none" stroke="#E0DDE8"/>
+        <rect x="130" y="302" width="260" height="8" rx="2" fill="none" stroke="#E0DDE8"/>
+        <!-- Pontos de pinos -->
+        <g fill="#BFBAC8">
+          <circle cx="150" cy="134" r="2"/><circle cx="166" cy="134" r="2"/><circle cx="182" cy="134" r="2"/>
+          <circle cx="198" cy="134" r="2"/><circle cx="214" cy="134" r="2"/><circle cx="230" cy="134" r="2"/>
+          <circle cx="246" cy="134" r="2"/><circle cx="262" cy="134" r="2"/><circle cx="278" cy="134" r="2"/>
+          <circle cx="294" cy="134" r="2"/><circle cx="310" cy="134" r="2"/><circle cx="326" cy="134" r="2"/>
+          <circle cx="342" cy="134" r="2"/><circle cx="358" cy="134" r="2"/><circle cx="374" cy="134" r="2"/>
+        </g>
+
+        <!-- Trilhas de circuito -->
+        <g stroke="#7C3AED" stroke-width="1" opacity="0.25">
+          <path d="M140 180 L140 250 L206 250"/>
+          <path d="M380 180 L380 240 L314 240"/>
+          <path d="M160 306 L160 280 L206 280"/>
+        </g>
+
+        <!-- LED indicador roxo -->
+        <circle cx="370" cy="160" r="6" fill="#7C3AED" opacity="0.8"/>
+        <circle cx="370" cy="160" r="12" fill="#7C3AED" opacity="0.1"/>
+
+        <!-- USB Port -->
+        <rect x="110" y="196" width="16" height="28" rx="3" fill="#E8E6EE"/>
+
+        <!-- Sensor PIR estilizado embaixo -->
+        <circle cx="180" cy="400" r="36" fill="#fff" stroke="#E0DDE8" stroke-width="1.5"/>
+        <circle cx="180" cy="400" r="20" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.4"/>
+        <circle cx="180" cy="400" r="7" fill="#7C3AED" opacity="0.6"/>
+
+        <!-- Sensor ultrassônico estilizado -->
+        <rect x="310" y="375" width="90" height="50" rx="8" fill="#fff" stroke="#E0DDE8" stroke-width="1.5"/>
+        <circle cx="338" cy="400" r="12" fill="none" stroke="#BFBAC8" stroke-width="1.5"/>
+        <circle cx="372" cy="400" r="12" fill="none" stroke="#BFBAC8" stroke-width="1.5"/>
+
+        <!-- Fios de conexão tracejados -->
+        <g fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.3" stroke-dasharray="4 4" stroke-linecap="round">
+          <path d="M180 364 C180 340, 200 330, 220 310"/>
+          <path d="M355 375 C355 350, 340 335, 320 310"/>
+        </g>
+
+        <!-- Labels discretas -->
+        <text x="180" y="455" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#9B8FFF" letter-spacing="0.1em">PIR</text>
+        <text x="355" y="445" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#9B8FFF" letter-spacing="0.1em">HC-SR04</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ VISÃO GERAL ═══════════════════════════════════════ -->
+<section class="portal-intro"><div class="portal-wrap"><p class="eyebrow">03 / CONTROLADOR</p><h2>ARDUINO: DO CÓDIGO AO DISPOSITIVO</h2><p class="section-lead">Arduino é uma plataforma de prototipagem com hardware e software de código aberto. A placa recebe informações de sensores, executa uma lógica programada e pode controlar LEDs, motores, relés e outros atuadores.</p><div class="spec-grid"><div><b>Hardware</b><span>Placa, microcontrolador e pinos de entrada/saída</span></div><div><b>Software</b><span>Arduino IDE para escrever, compilar e enviar o código</span></div><div><b>Linguagem</b><span>Baseada em C/C++</span></div><div><b>Entradas</b><span>Pinos digitais e entradas analógicas</span></div><div><b>Sensores</b><span>Leitura de temperatura, luz, movimento, distância e outros</span></div><div><b>IoT</b><span>Pode participar de projetos conectados a redes e serviços</span></div></div></div></section><section class="portal-section portal-section--alt"><div class="portal-wrap"><p class="eyebrow">EXEMPLOS DE PROGRAMAÇÃO COM SENSORES</p><h2>10 IDEIAS PARA LIGAR SENSOR + CÓDIGO</h2><div class="code-mini-grid"><article><span>01 / DHT11</span><pre><code>float temperatura = dht.readTemperature();</code></pre></article><article><span>02 / LM35</span><pre><code>int valor = analogRead(A0);</code></pre></article><article><span>03 / LDR</span><pre><code>int luz = analogRead(A0);</code></pre></article><article><span>04 / HC-SR04</span><pre><code>digitalWrite(LED, distancia &lt; 20);</code></pre></article><article><span>05 / PIR HC-SR501</span><pre><code>digitalWrite(LED, digitalRead(PIR));</code></pre></article><article><span>06 / MQ-2</span><pre><code>int gas = analogRead(A0);</code></pre></article><article><span>07 / Boia magnética</span><pre><code>bool nivel = digitalRead(BOIA);</code></pre></article><article><span>08 / ACS712</span><pre><code>int corrente = analogRead(A0);</code></pre></article><article><span>09 / RFID MFRC522</span><pre><code>if (rfid.PICC_IsNewCardPresent()) { /* ler tag */ }</code></pre></article><article><span>10 / Célula de carga + HX711</span><pre><code>long peso = scale.get_units(10);</code></pre></article></div></div></section><section class="sect sect--alt" id="visao-geral">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">01 / VISÃO GERAL</p>
+      <h2 class="sect__title">TRÊS DESAFIOS.<br>UMA EXPERIÊNCIA PRÁTICA.</h2>
+      <p class="sect__text">Durante a atividade foram desenvolvidos três desafios utilizando Arduino e diferentes componentes eletrônicos. Cada experimento apresenta uma situação específica em que sensores fornecem informações que são processadas pelo sistema para produzir uma resposta.</p>
+    </div>
+
+    <div class="overview reveal">
+      <div class="ov-item">
+        <span class="ov-num">01</span>
+        <span class="ov-label">ILUMINAÇÃO</span>
+      </div>
+      <div class="ov-line"></div>
+      <div class="ov-item">
+        <span class="ov-num">02</span>
+        <span class="ov-label">DISTÂNCIA</span>
+      </div>
+      <div class="ov-line"></div>
+      <div class="ov-item">
+        <span class="ov-num">03</span>
+        <span class="ov-label">AMBIENTE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PROCESSO ═══════════════════════════════════════ -->
+<section class="sect process-sect">
+  <div class="wrap">
+    <div class="process reveal">
+      <div class="ps">
+        <div class="ps__circle">SENSOR</div>
+        <p class="ps__desc">Capta dados do ambiente.</p>
+      </div>
+      <div class="ps__connector" aria-hidden="true"><span></span></div>
+      <div class="ps">
+        <div class="ps__circle">LEITURA</div>
+        <p class="ps__desc">Envia sinais ao Arduino.</p>
+      </div>
+      <div class="ps__connector" aria-hidden="true"><span></span></div>
+      <div class="ps">
+        <div class="ps__circle">PROCESSAMENTO</div>
+        <p class="ps__desc">Analisa as informações.</p>
+      </div>
+      <div class="ps__connector" aria-hidden="true"><span></span></div>
+      <div class="ps">
+        <div class="ps__circle">DECISÃO</div>
+        <p class="ps__desc">Aplica a lógica.</p>
+      </div>
+      <div class="ps__connector" aria-hidden="true"><span></span></div>
+      <div class="ps">
+        <div class="ps__circle">AÇÃO</div>
+        <p class="ps__desc">Executa a resposta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ DESAFIO 01 ═══════════════════════════════════════ -->
+<section class="sect sect--alt" id="desafio-01">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">01 / DESAFIO — SISTEMA DE ILUMINAÇÃO</p>
+      <h2 class="sect__title">QUANDO MOVIMENTO<br>E LUZ DETERMINAM A AÇÃO.</h2>
+      <p class="sect__text">O sistema utiliza um sensor PIR para detectar movimento e um sensor LDR para identificar a luminosidade do ambiente. O LED deve acender quando houver movimento em um ambiente escuro.</p>
+    </div>
+
+    <!-- Componentes -->
+    <div class="comps reveal">
+      <div class="comp"><h4>PIR</h4><p>Detecção de movimento.</p></div>
+      <div class="comp"><h4>LDR</h4><p>Leitura da luminosidade.</p></div>
+      <div class="comp"><h4>LED</h4><p>Resposta visual.</p></div>
+      <div class="comp"><h4>RESISTOR</h4><p>Proteção do circuito.</p></div>
+    </div>
+
+    <!-- Fluxo -->
+    <div class="flow-box reveal">
+      <div class="flow-chain">
+        <span class="fc-node">MOVIMENTO</span>
+        <span class="fc-plus">+</span>
+        <span class="fc-node">LUMINOSIDADE</span>
+      </div>
+      <div class="fc-arrow">&darr;</div>
+      <div class="fc-node fc-node--accent">ARDUINO</div>
+      <div class="fc-arrow">&darr;</div>
+      <div class="fc-node">LED</div>
+      <div class="fc-highlight">MOVIMENTO + AMBIENTE ESCURO = LED LIGADO</div>
+    </div>
+
+    <!-- Vídeo com Abas Interativas -->
+    <div class="media reveal">
+      <div class="media__header">
+        <p class="media__label">REGISTRO DO EXPERIMENTO</p>
+        <div class="media__tabs" role="tablist" aria-label="Opções de visualização do Desafio 01">
+          <button class="tab-btn is-active" role="tab" aria-selected="true" data-tab-target="d1-sim">
+            <span class="tab-btn__icon">💻</span>
+            <span>Simulação Virtual</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab-target="d1-lab">
+            <span class="tab-btn__icon">🔬</span>
+            <span>Prática na Bancada</span>
+            <span class="tab-btn__badge">Real</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Painel 1: Simulação Tinkercad -->
+      <div class="media__pane is-active" id="d1-sim" role="tabpanel">
+        <div class="vid">
+          <video controls playsinline preload="metadata">
+            <source src="gravacoes/desafio1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="media__caption">Simulação completa do circuito no Autodesk Tinkercad com sensor PIR, sensor de luz e acionamento lógico.</p>
+      </div>
+
+      <!-- Painel 2: Prática na Bancada (Layout Otimizado para Vídeo Vertical) -->
+      <div class="media__pane" id="d1-lab" role="tabpanel">
+        <div class="lab-showcase">
+          <div class="lab-showcase__player">
+            <div class="vid vid--portrait">
+              <video controls playsinline preload="metadata">
+                <source src="videos/pratica-desafio1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="lab-showcase__info">
+            <div class="lab-badge">
+              <span class="lab-badge__dot"></span>
+              <span>TESTE FÍSICO EM LABORATÓRIO</span>
+            </div>
+            <h3 class="lab-title">Validação com Hardware Real</h3>
+            <p class="lab-desc">
+              Execução prática do circuito montado na protoboard conectado à placa Arduino Uno física. Ao cobrir o sensor LDR para simular ambiente escuro e gerar movimentação em frente ao sensor PIR, o sistema valida a condição lógica e aciona imediatamente o LED vermelho.
+            </p>
+
+            <div class="lab-specs">
+              <div class="lab-spec">
+                <span class="lab-spec__key">HARDWARE</span>
+                <span class="lab-spec__val">Arduino Uno R3</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">SENSORES</span>
+                <span class="lab-spec__val">PIR (Movimento) + LDR (Luz)</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">STATUS</span>
+                <span class="lab-spec__val lab-spec__val--ok">✓ Condição Lógica Validada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Código -->
+    <div class="code-sect reveal">
+      <p class="media__label">CÓDIGO UTILIZADO</p>
+      <div class="editor">
+        <div class="editor__bar">
+          <div class="editor__dots"><i></i><i></i><i></i></div>
+          <span class="editor__file">desafio_01.ino</span>
+          <button class="editor__copy" data-target="code1">
+            <span class="copy-default">COPIAR</span>
+            <span class="copy-done">Código copiado!</span>
+          </button>
+        </div>
+        <div class="editor__body">
+          <pre><code id="code1">// Insira aqui o código do Desafio 01</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ DESAFIO 02 ═══════════════════════════════════════ -->
+<section class="sect" id="desafio-02">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">02 / DESAFIO — SISTEMA DE DISTÂNCIA</p>
+      <h2 class="sect__title">MEDIR.<br>COMPARAR.<br>RESPONDER.</h2>
+      <p class="sect__text">O sistema utiliza um sensor ultrassônico para medir a distância entre o sensor e um objeto. O potenciômetro define o limite utilizado pelo programa para determinar o comportamento do LED.</p>
+    </div>
+
+    <!-- Representação da régua -->
+    <div class="ruler reveal">
+      <div class="ruler__track">
+        <span class="ruler__label">SENSOR ULTRASSÔNICO</span>
+        <span class="ruler__bar"></span>
+        <span class="ruler__label">OBJETO</span>
+      </div>
+      <div class="ruler__info">
+        <div class="ruler__measure">
+          <span>DISTÂNCIA MEDIDA</span>
+        </div>
+        <div class="ruler__limit">
+          <span>LIMITE CONFIGURADO</span>
+          <div class="pot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fluxo vertical -->
+    <div class="vflow reveal">
+      <div class="vf-node">MEDIR DISTÂNCIA</div>
+      <div class="vf-arr">&darr;</div>
+      <div class="vf-node">LER LIMITE</div>
+      <div class="vf-arr">&darr;</div>
+      <div class="vf-node">COMPARAR</div>
+      <div class="vf-arr">&darr;</div>
+      <div class="vf-node">DECIDIR</div>
+      <div class="vf-arr">&darr;</div>
+      <div class="vf-node vf-node--accent">CONTROLAR LED</div>
+    </div>
+
+    <!-- Vídeo com Abas Interativas -->
+    <div class="media reveal">
+      <div class="media__header">
+        <p class="media__label">REGISTRO DO EXPERIMENTO</p>
+        <div class="media__tabs" role="tablist" aria-label="Opções de visualização do Desafio 02">
+          <button class="tab-btn is-active" role="tab" aria-selected="true" data-tab-target="d2-sim">
+            <span class="tab-btn__icon">💻</span>
+            <span>Simulação Virtual</span>
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab-target="d2-lab">
+            <span class="tab-btn__icon">🔬</span>
+            <span>Prática na Bancada</span>
+            <span class="tab-btn__badge">Real</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Painel 1: Simulação Tinkercad -->
+      <div class="media__pane is-active" id="d2-sim" role="tabpanel">
+        <div class="vid">
+          <video controls playsinline preload="metadata">
+            <source src="gravacoes/desafio2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="media__caption">Simulação do sensor de distância ultrassônico com potenciômetro definindo o limiar no Autodesk Tinkercad.</p>
+      </div>
+
+      <!-- Painel 2: Prática na Bancada (Layout Otimizado para Vídeo Vertical) -->
+      <div class="media__pane" id="d2-lab" role="tabpanel">
+        <div class="lab-showcase">
+          <div class="lab-showcase__player">
+            <div class="vid vid--portrait">
+              <video controls playsinline preload="metadata">
+                <source src="videos/pratica-desafio2.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="lab-showcase__info">
+            <div class="lab-badge">
+              <span class="lab-badge__dot"></span>
+              <span>TESTE FÍSICO EM LABORATÓRIO</span>
+            </div>
+            <h3 class="lab-title">Medição e Monitor Serial ao Vivo</h3>
+            <p class="lab-desc">
+              Teste real com o sensor ultrassônico HC-SR04 e potenciômetro montados na protoboard. No vídeo é possível observar o Serial Monitor do Arduino IDE calculando a distância medida em centímetros em tempo real e comparando dinamicamente com o limiar configurado.
+            </p>
+
+            <div class="lab-specs">
+              <div class="lab-spec">
+                <span class="lab-spec__key">HARDWARE</span>
+                <span class="lab-spec__val">Arduino Uno R3</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">SENSORES</span>
+                <span class="lab-spec__val">HC-SR04 + Potenciômetro A0</span>
+              </div>
+              <div class="lab-spec">
+                <span class="lab-spec__key">TELEMETRIA</span>
+                <span class="lab-spec__val lab-spec__val--ok">✓ Serial Monitor Ativo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Código -->
+    <div class="code-sect reveal">
+      <div class="editor">
+        <div class="editor__bar">
+          <div class="editor__dots"><i></i><i></i><i></i></div>
+          <span class="editor__file">desafio_02.ino</span>
+          <button class="editor__copy" data-target="code2">
+            <span class="copy-default">COPIAR</span>
+            <span class="copy-done">Código copiado!</span>
+          </button>
+        </div>
+        <div class="editor__body">
+          <pre><code id="code2">// Insira aqui o código do Desafio 02</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ DESAFIO 03 ═══════════════════════════════════════ -->
+<section class="sect sect--alt" id="desafio-03">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">03 / DESAFIO — SISTEMA AMBIENTAL</p>
+      <h2 class="sect__title">OBSERVAR O AMBIENTE<br>ATRAVÉS DOS DADOS.</h2>
+      <p class="sect__text">O sistema utiliza sensores de temperatura e umidade para monitorar as condições do ambiente. LEDs são utilizados para representar visualmente as diferentes condições identificadas.</p>
+    </div>
+
+    <!-- Indicadores circulares -->
+    <div class="gauges reveal">
+      <div class="gauge">
+        <div class="gauge__circle">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#EDEBF2" stroke-width="2"/><circle cx="50" cy="50" r="44" fill="none" stroke="#7C3AED" stroke-width="2" stroke-dasharray="140 280" stroke-linecap="round" opacity="0.5"/></svg>
+          <div class="gauge__icon">🌡</div>
+        </div>
+        <h4>TEMPERATURA</h4>
+      </div>
+      <div class="gauge">
+        <div class="gauge__circle">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#EDEBF2" stroke-width="2"/><circle cx="50" cy="50" r="44" fill="none" stroke="#7C3AED" stroke-width="2" stroke-dasharray="180 280" stroke-linecap="round" opacity="0.5"/></svg>
+          <div class="gauge__icon">💧</div>
+        </div>
+        <h4>UMIDADE</h4>
+      </div>
+      <div class="gauge">
+        <div class="gauge__circle">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#EDEBF2" stroke-width="2"/><circle cx="50" cy="50" r="44" fill="none" stroke="#7C3AED" stroke-width="2" stroke-dasharray="200 280" stroke-linecap="round" opacity="0.5"/></svg>
+          <div class="gauge__icon">✓</div>
+        </div>
+        <h4>CONDIÇÃO</h4>
+      </div>
+    </div>
+
+    <!-- Fluxo -->
+    <div class="vflow reveal">
+      <div class="flow-chain">
+        <span class="vf-node">TEMPERATURA</span>
+        <span class="fc-plus">+</span>
+        <span class="vf-node">UMIDADE</span>
+      </div>
+      <div class="vf-arr">&darr;</div>
+      <div class="vf-node vf-node--accent">ARDUINO</div>
+      <div class="vf-arr">&darr;</div>
+      <div class="vf-node">ANÁLISE</div>
+      <div class="vf-arr">&darr;</div>
+      <div class="vf-node">INDICADORES</div>
+    </div>
+
+    <!-- Vídeo -->
+    <div class="media reveal">
+      <div class="media__header">
+        <p class="media__label">REGISTRO DO EXPERIMENTO</p>
+        <div class="media__badge-tag">
+          <span class="media__badge-icon">💻</span>
+          <span>Simulação Virtual (Tinkercad)</span>
+        </div>
+      </div>
+      <div class="vid">
+        <video controls playsinline preload="metadata">
+          <source src="gravacoes/desafio3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="media__caption">Monitoramento ambiental com sensores de temperatura e umidade com indicação por LEDs no Autodesk Tinkercad.</p>
+    </div>
+
+    <!-- Código -->
+    <div class="code-sect reveal">
+      <div class="editor">
+        <div class="editor__bar">
+          <div class="editor__dots"><i></i><i></i><i></i></div>
+          <span class="editor__file">desafio_03.ino</span>
+          <button class="editor__copy" data-target="code3">
+            <span class="copy-default">COPIAR</span>
+            <span class="copy-done">Código copiado!</span>
+          </button>
+        </div>
+        <div class="editor__body">
+          <pre><code id="code3">// Insira aqui o código do Desafio 03</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ RESULTADOS ═══════════════════════════════════════ -->
+<section class="sect" id="resultados">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">03 / RESULTADOS</p>
+      <h2 class="sect__title">TRÊS APLICAÇÕES.<br>UMA MESMA LÓGICA.</h2>
+    </div>
+
+    <div class="results reveal">
+      <div class="res">
+        <span class="res__num">01</span>
+        <h4 class="res__title">ILUMINAÇÃO</h4>
+        <p class="res__desc">Movimento + luminosidade<br>&rarr; controle do LED.</p>
+      </div>
+      <div class="res">
+        <span class="res__num">02</span>
+        <h4 class="res__title">DISTÂNCIA</h4>
+        <p class="res__desc">Medição + limite<br>&rarr; controle do LED.</p>
+      </div>
+      <div class="res">
+        <span class="res__num">03</span>
+        <h4 class="res__title">AMBIENTE</h4>
+        <p class="res__desc">Temperatura + umidade<br>&rarr; indicadores.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CONCEITOS ═══════════════════════════════════════ -->
+<section class="sect sect--alt concepts-sect">
+  <div class="wrap">
+    <h2 class="concepts-heading reveal">O QUE FOI DESENVOLVIDO</h2>
+
+    <div class="concepts reveal">
+      <div class="cpt">
+        <h3>SENSORES</h3>
+        <p>Captação de dados do mundo físico.</p>
+      </div>
+      <div class="cpt">
+        <h3>PROGRAMAÇÃO</h3>
+        <p>Estruturação de algoritmos e rotinas.</p>
+      </div>
+      <div class="cpt">
+        <h3>LÓGICA</h3>
+        <p>Tomada de decisão baseada em condições.</p>
+      </div>
+      <div class="cpt">
+        <h3>AUTOMAÇÃO</h3>
+        <p>Execução de tarefas sem intervenção humana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ PRÁTICA EM LABORATÓRIO ═══════════════════════════════════════ -->
+<section class="sect sect--alt" id="pratica">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">04 / PRÁTICA EM LABORATÓRIO</p>
+      <h2 class="sect__title">DO CIRCUITO VIRTUAL<br>À BANCADA REAL.</h2>
+      <p class="sect__text">Registros das montagens físicas dos circuitos na protoboard e da validação do código com o Arduino Uno. Os experimentos foram testados e confirmados em ambiente real de laboratório.</p>
+    </div>
+
+    <div class="pratica-grid reveal">
+
+      <!-- Vídeo 1 -->
+      <div class="pratica-card">
+        <div class="pratica-card__header">
+          <span class="pratica-card__num">01</span>
+          <div>
+            <h3 class="pratica-card__title">Iluminação Inteligente</h3>
+            <p class="pratica-card__sub">PIR + LDR + LED em hardware real</p>
+          </div>
+        </div>
+        <div class="pratica-card__vid">
+          <video controls playsinline preload="metadata">
+            <source src="videos/pratica-desafio1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="pratica-card__desc">Sensor PIR detecta movimentação e sensor LDR lê a luminosidade ambiente. O LED acende quando há movimento e pouca luz — condição lógica validada na bancada.</p>
+      </div>
+
+      <!-- Vídeo 2 -->
+      <div class="pratica-card">
+        <div class="pratica-card__header">
+          <span class="pratica-card__num">02</span>
+          <div>
+            <h3 class="pratica-card__title">Medição de Distância</h3>
+            <p class="pratica-card__sub">HC-SR04 + Potenciômetro em hardware real</p>
+          </div>
+        </div>
+        <div class="pratica-card__vid">
+          <video controls playsinline preload="metadata">
+            <source src="videos/pratica-desafio2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="pratica-card__desc">Sensor ultrassônico mede a distância em centímetros em tempo real. O potenciômetro define o limite de comparação — visualizado no Serial Monitor do Arduino IDE.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CONCLUSÃO ═══════════════════════════════════════ -->
+<section class="sect conclusion" id="conclusao">
+  <div class="wrap center reveal">
+    <h2 class="sect__title">DA TEORIA<br>À PRÁTICA.</h2>
+    <p class="conclusion__text">A atividade permitiu aplicar conceitos de Arduino, sensores, programação e lógica de controle em diferentes situações práticas, mostrando como informações do ambiente podem ser utilizadas para gerar respostas automatizadas.</p>
+    <div class="conclusion__line"></div>
+    <p class="conclusion__tags">ARDUINO &bull; SENSORES &bull; PROGRAMAÇÃO &bull; AUTOMAÇÃO</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ TELA FINAL ═══════════════════════════════════════ -->
+<section class="final">
+  <div class="wrap center reveal">
+    <h2 class="final__title">PROJETO CONCLUÍDO</h2>
+    <p class="final__desc">Três desafios desenvolvidos, testados e documentados.</p>
+
+    <div class="final__stats">
+      <div class="fst"><span class="fst__num">03</span><span class="fst__label">DESAFIOS</span></div>
+      <div class="fst"><span class="fst__num">03</span><span class="fst__label">EXPERIMENTOS</span></div>
+      <div class="fst"><span class="fst__num">01</span><span class="fst__label">PROJETO</span></div>
+    </div>
+
+    <a href="#inicio" class="btn btn--ghost btn--sm">VOLTAR AO INÍCIO &uarr;</a>
+  </div>
+</section>
+
+<footer class="portal-footer"><div class="portal-wrap"><strong>PORTAL DE ROBÓTICA &amp; INDÚSTRIA 4.0</strong><span>Área Arduino • desafios práticos • sensores • programação</span></div></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

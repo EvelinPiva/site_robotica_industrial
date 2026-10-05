@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulado — Portal de Robótica & Indústria 4.0</title>
+<meta name="description" content="Simulado sobre Arduino, ESP, robótica e codificação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/portal.css"> <link rel="icon" type="image/png" href="favicon.png">
+<script src="js/portal.js" defer></script>
+</head>
+<body data-active="simulado">
+<header class="portal-nav" id="portalNav"><div class="portal-nav__wrap">
+<a class="portal-brand" href="index.html"><strong>PORTAL</strong><span>ROBÓTICA &amp; INDÚSTRIA 4.0</span></a>
+<button class="portal-burger" id="portalBurger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav class="portal-menu" id="portalMenu">
+<a href="index.html">Início</a><a href="sensores.html">Sensores</a><a href="arduino.html">Arduino</a><a href="cartesiano.html">Cartesiano</a><a href="scara.html">SCARA</a><a href="articulado.html">Articulado</a><a href="cilindrico.html">Cilíndrico</a><a href="delta.html">Delta</a><a href="polar.html">Polar</a><a href="colaborativo.html">Cobot</a><a href="simulado.html">Simulado</a>
+</nav></div></header>
+
+<main>
+<section class="page-hero"><div class="portal-wrap">
+<p class="eyebrow">DESAFIO • 10 QUESTÕES</p>
+<h1>SIMULADO DE <span>ROBÓTICA</span></h1>
+<p class="lead">Teste seus conhecimentos sobre Arduino, ESP, sensores, robótica, multímetro e codificação. Selecione apenas uma alternativa em cada questão e envie suas respostas para conferir seu resultado.</p>
+</div></section>
+
+<section class="portal-section simulado-section"><div class="portal-wrap">
+<form id="quizForm" class="quiz-form">
+<div class="quiz-progress"><div><span id="answeredCount">0</span> de 10 respondidas</div><div class="progress-track"><span id="progressBar"></span></div></div>
+
+<div class="question-card" data-question="1"><div class="question-header"><span>01</span><div><b>Codificação</b><h2>Um estudante está desenvolvendo um sistema com Arduino para acender um LED somente quando a temperatura ultrapassar <strong>30 °C</strong>. O sensor de temperatura fornece seu valor para a variável <code>temperatura</code>.</h2></div></div><p class="question-context">Para que o LED permaneça aceso enquanto a temperatura estiver acima de 30 °C e apagado nos demais casos, qual trecho deve ser colocado no <code>loop()</code>?</p><div class="options">
+<label><input type="radio" name="q1" value="A"><span class="option-letter">A</span><span><code>if (temperatura &lt; 30)</code><br><code>digitalWrite(led, HIGH);</code><br><code>} else { digitalWrite(led, LOW); }</code></span></label>
+<label><input type="radio" name="q1" value="B"><span class="option-letter">B</span><span><code>if (temperatura &gt; 30)</code><br><code>digitalWrite(led, HIGH);</code><br><code>} else { digitalWrite(led, LOW); }</code></span></label>
+<label><input type="radio" name="q1" value="C"><span class="option-letter">C</span><span><code>if (temperatura == 30)</code><br><code>digitalWrite(led, HIGH);</code><br><code>} else { digitalWrite(led, LOW); }</code></span></label>
+<label><input type="radio" name="q1" value="D"><span class="option-letter">D</span><span><code>if (temperatura &gt;= 30)</code><br><code>digitalWrite(led, LOW);</code><br><code>} else { digitalWrite(led, HIGH); }</code></span></label>
+<label><input type="radio" name="q1" value="E"><span class="option-letter">E</span><span><code>if (temperatura != 30)</code><br><code>digitalWrite(led, LOW);</code><br><code>} else { digitalWrite(led, HIGH); }</code></span></label>
+</div></div>
+
+<div class="question-card" data-question="2"><div class="question-header"><span>02</span><div><b>Arduino</b><h2>Em um projeto de automação residencial, um Arduino deve controlar uma lâmpada utilizando um botão.</h2></div></div><p class="question-context">Enquanto o botão estiver pressionado, a lâmpada deve permanecer acesa. Quando o botão for liberado, a lâmpada deve apagar. O botão está conectado a uma entrada digital e a lâmpada a uma saída digital. Qual estrutura representa corretamente essa lógica?</p><div class="options">
+<label><input type="radio" name="q2" value="A"><span class="option-letter">A</span><span>Ler o estado do botão e, caso seja <code>HIGH</code>, enviar <code>HIGH</code> para a saída da lâmpada; caso contrário, enviar <code>LOW</code>.</span></label>
+<label><input type="radio" name="q2" value="B"><span class="option-letter">B</span><span>Configurar o botão como <code>OUTPUT</code> e a lâmpada como <code>INPUT</code>, permitindo que o Arduino transfira diretamente o estado entre os dois componentes.</span></label>
+<label><input type="radio" name="q2" value="C"><span class="option-letter">C</span><span>Utilizar <code>analogRead()</code> para verificar o botão e <code>analogWrite()</code> para ligar ou desligar completamente a lâmpada.</span></label>
+<label><input type="radio" name="q2" value="D"><span class="option-letter">D</span><span>Utilizar <code>digitalWrite()</code> para verificar o estado do botão e <code>digitalRead()</code> para controlar a lâmpada.</span></label>
+<label><input type="radio" name="q2" value="E"><span class="option-letter">E</span><span>Manter a lâmpada permanentemente em <code>HIGH</code> e utilizar o botão apenas para interromper a execução do <code>loop()</code>.</span></label>
+</div></div>
+
+<div class="question-card" data-question="3"><div class="question-header"><span>03</span><div><b>Sensores</b><h2>Um robô utiliza um sensor ultrassônico para identificar obstáculos. Durante um teste, foram realizadas três medições: <strong>80 cm, 78 cm e 20 cm</strong>.</h2></div></div><p class="question-context">O programa foi configurado para fazer o robô parar sempre que a distância medida for menor que 30 cm. Considerando apenas os valores apresentados, qual comportamento é esperado?</p><div class="options">
+<label><input type="radio" name="q3" value="A"><span class="option-letter">A</span><span>O robô permanecerá em movimento nas três medições, pois o sensor ultrassônico trabalha apenas com distâncias superiores a 50 cm.</span></label>
+<label><input type="radio" name="q3" value="B"><span class="option-letter">B</span><span>O robô parará somente na primeira medição, pois 80 cm representa a maior distância registrada.</span></label>
+<label><input type="radio" name="q3" value="C"><span class="option-letter">C</span><span>O robô parará nas três medições, pois qualquer valor retornado pelo sensor representa a presença de um obstáculo.</span></label>
+<label><input type="radio" name="q3" value="D"><span class="option-letter">D</span><span>O robô continuará nas duas primeiras medições e deverá parar na terceira, pois somente nela a distância está abaixo do limite programado.</span></label>
+<label><input type="radio" name="q3" value="E"><span class="option-letter">E</span><span>O robô parará na segunda medição, pois valores próximos de 80 cm indicam maior risco de colisão.</span></label>
+</div></div>
+
+<div class="question-card" data-question="4"><div class="question-header"><span>04</span><div><b>Codificação</b><h2>Observe o código com <code>contador = 0</code>, incremento por <code>contador++</code> e uma condição <code>contador &gt;= 5</code>.</h2></div></div><p class="question-context">O objetivo do programa é acompanhar quantas vezes determinada ação foi executada e informar o valor após cinco execuções. O que será observado no monitor serial?</p><div class="options">
+<label><input type="radio" name="q4" value="A"><span class="option-letter">A</span><span>Os valores 0, 1, 2, 3 e 4 serão exibidos continuamente.</span></label>
+<label><input type="radio" name="q4" value="B"><span class="option-letter">B</span><span>O valor 5 será exibido repetidamente, sem que o contador volte a zero.</span></label>
+<label><input type="radio" name="q4" value="C"><span class="option-letter">C</span><span>O valor 4 será exibido a cada cinco segundos.</span></label>
+<label><input type="radio" name="q4" value="D"><span class="option-letter">D</span><span>O valor 1 será exibido continuamente, pois <code>contador++</code> reinicia a variável a cada execução.</span></label>
+<label><input type="radio" name="q4" value="E"><span class="option-letter">E</span><span>O valor 5 será exibido, depois o contador será zerado e o processo será repetido após novas cinco execuções.</span></label>
+</div></div>
+
+<div class="question-card" data-question="5"><div class="question-header"><span>05</span><div><b>Multímetro</b><h2>Durante a montagem de um circuito, um estudante deseja verificar se uma bateria está fornecendo aproximadamente <strong>9 V</strong>.</h2></div></div><p class="question-context">Ele conecta as pontas de prova diretamente aos terminais positivo e negativo da bateria. Para que a medição seja realizada corretamente, o multímetro deve estar configurado para:</p><div class="options">
+<label><input type="radio" name="q5" value="A"><span class="option-letter">A</span><span>Medir corrente contínua, sendo conectado em série com a bateria.</span></label>
+<label><input type="radio" name="q5" value="B"><span class="option-letter">B</span><span>Medir resistência, pois a resistência interna determina a tensão fornecida.</span></label>
+<label><input type="radio" name="q5" value="C"><span class="option-letter">C</span><span>Medir tensão contínua, com as pontas de prova conectadas em paralelo aos terminais da bateria.</span></label>
+<label><input type="radio" name="q5" value="D"><span class="option-letter">D</span><span>Medir continuidade, conectando as pontas de prova obrigatoriamente em série.</span></label>
+<label><input type="radio" name="q5" value="E"><span class="option-letter">E</span><span>Medir tensão alternada, pois toda tensão elétrica deve ser inicialmente medida nessa configuração.</span></label>
+</div></div>
+
+<div class="question-card" data-question="6"><div class="question-header"><span>06</span><div><b>ESP</b><h2>Um estudante utiliza uma placa <strong>ESP32</strong> para desenvolver um sistema que envia informações coletadas por sensores para uma aplicação online.</h2></div></div><p class="question-context">O projeto necessita de comunicação com uma rede sem fio. Nesse contexto, qual característica do ESP32 é especialmente relevante?</p><div class="options">
+<label><input type="radio" name="q6" value="A"><span class="option-letter">A</span><span>Possuir exclusivamente portas analógicas, não permitindo comunicação digital.</span></label>
+<label><input type="radio" name="q6" value="B"><span class="option-letter">B</span><span>Possuir recursos integrados de comunicação sem fio, como Wi-Fi e Bluetooth, facilitando a conexão com outros dispositivos e serviços.</span></label>
+<label><input type="radio" name="q6" value="C"><span class="option-letter">C</span><span>Funcionar somente quando conectado a um computador por USB durante toda a execução.</span></label>
+<label><input type="radio" name="q6" value="D"><span class="option-letter">D</span><span>Substituir necessariamente todos os sensores externos, pois possui sensores físicos integrados para qualquer tipo de grandeza.</span></label>
+<label><input type="radio" name="q6" value="E"><span class="option-letter">E</span><span>Utilizar apenas comunicação por cabo serial, não sendo adequado para aplicações conectadas à internet.</span></label>
+</div></div>
+
+<div class="question-card" data-question="7"><div class="question-header"><span>07</span><div><b>Robô</b><h2>Em uma competição de robótica, um robô autônomo precisa seguir uma linha preta sobre uma superfície clara.</h2></div></div><p class="question-context">Ele possui dois sensores próximos ao chão. O sensor esquerdo detectou a linha e o direito não detectou. Considerando uma estratégia básica de controle para manter o robô sobre a trajetória, qual ação é mais coerente?</p><div class="options">
+<label><input type="radio" name="q7" value="A"><span class="option-letter">A</span><span>Desligar imediatamente os dois motores, pois qualquer diferença entre os sensores indica falha.</span></label>
+<label><input type="radio" name="q7" value="B"><span class="option-letter">B</span><span>Aumentar igualmente a velocidade dos dois motores, independentemente dos sensores.</span></label>
+<label><input type="radio" name="q7" value="C"><span class="option-letter">C</span><span>Ajustar a velocidade dos motores para corrigir a direção do robô, fazendo-o deslocar-se em direção à linha.</span></label>
+<label><input type="radio" name="q7" value="D"><span class="option-letter">D</span><span>Inverter permanentemente o sentido dos dois motores para procurar novamente a linha.</span></label>
+<label><input type="radio" name="q7" value="E"><span class="option-letter">E</span><span>Ignorar os sensores e utilizar somente um temporizador para determinar a direção do robô.</span></label>
+</div></div>
+
+<div class="question-card" data-question="8"><div class="question-header"><span>08</span><div><b>Sensores</b><h2>Um sistema automatizado utiliza um <strong>LDR</strong> para controlar a iluminação de um ambiente.</h2></div></div><p class="question-context">Nos testes: ambiente iluminado → 850; parcialmente escuro → 500; escuro → 120. O programa acende a lâmpada quando a leitura for menor que 300. Em qual situação a lâmpada será acionada?</p><div class="options">
+<label><input type="radio" name="q8" value="A"><span class="option-letter">A</span><span>Somente no ambiente escuro.</span></label>
+<label><input type="radio" name="q8" value="B"><span class="option-letter">B</span><span>Somente no ambiente iluminado.</span></label>
+<label><input type="radio" name="q8" value="C"><span class="option-letter">C</span><span>Nos ambientes iluminado e parcialmente escuro.</span></label>
+<label><input type="radio" name="q8" value="D"><span class="option-letter">D</span><span>Em todas as situações, pois o LDR sempre indica presença de luz.</span></label>
+<label><input type="radio" name="q8" value="E"><span class="option-letter">E</span><span>Somente quando a leitura estiver exatamente em 300.</span></label>
+</div></div>
+
+<div class="question-card" data-question="9"><div class="question-header"><span>09</span><div><b>Arduino</b><h2>Um Arduino foi programado para controlar um motor utilizando uma variável chamada <code>velocidade</code>.</h2></div></div><p class="question-context">Valores menores que 50 fazem o motor funcionar lentamente; valores entre 50 e 150 representam velocidade intermediária; valores maiores que 150 fazem o motor funcionar rapidamente. Qual estrutura lógica é mais adequada?</p><div class="options">
+<label><input type="radio" name="q9" value="A"><span class="option-letter">A</span><span>Utilizar apenas três comandos <code>if</code> independentes, sem qualquer comparação entre os resultados.</span></label>
+<label><input type="radio" name="q9" value="B"><span class="option-letter">B</span><span>Utilizar uma estrutura <code>if</code>, <code>else if</code> e <code>else</code>, estabelecendo condições diferentes para cada faixa de valores.</span></label>
+<label><input type="radio" name="q9" value="C"><span class="option-letter">C</span><span>Utilizar somente <code>while</code>, pois estruturas condicionais não permitem trabalhar com intervalos numéricos.</span></label>
+<label><input type="radio" name="q9" value="D"><span class="option-letter">D</span><span>Utilizar três variáveis diferentes para representar obrigatoriamente cada velocidade, eliminando a necessidade de condições.</span></label>
+<label><input type="radio" name="q9" value="E"><span class="option-letter">E</span><span>Utilizar somente <code>if (velocidade == 50)</code>, pois todos os valores de velocidade podem ser convertidos automaticamente para 50.</span></label>
+</div></div>
+
+<div class="question-card" data-question="10"><div class="question-header"><span>10</span><div><b>Codificação</b><h2>Observe o código com <code>x = 10</code> e <code>y = 5</code>, seguido das condições com os operadores <code>&amp;&amp;</code> e <code>||</code>.</h2></div></div><p class="question-context">Considerando os valores iniciais de <code>x</code> e <code>y</code>, qual resultado será enviado ao monitor serial?</p><div class="options">
+<label><input type="radio" name="q10" value="A"><span class="option-letter">A</span><span><code>B</code>, porque a segunda condição verifica se pelo menos uma das comparações é verdadeira.</span></label>
+<label><input type="radio" name="q10" value="B"><span class="option-letter">B</span><span><code>C</code>, porque nenhuma das condições possui igualdade entre <code>x</code> e <code>y</code>.</span></label>
+<label><input type="radio" name="q10" value="C"><span class="option-letter">C</span><span><code>B</code>, porque <code>x</code> é maior que <code>y</code> e, portanto, a segunda condição é automaticamente escolhida.</span></label>
+<label><input type="radio" name="q10" value="D"><span class="option-letter">D</span><span><code>A</code>, porque as duas condições da primeira expressão são verdadeiras.</span></label>
+<label><input type="radio" name="q10" value="E"><span class="option-letter">E</span><span>Nenhuma mensagem será exibida, pois o operador <code>&amp;&amp;</code> não pode ser utilizado dentro de um <code>if</code>.</span></label>
+</div></div>
+
+<div class="quiz-actions"><button class="pbtn" type="submit">Enviar respostas</button><button class="pbtn pbtn--ghost" type="button" id="resetQuiz">Refazer simulado</button></div>
+<div id="quizResult" class="quiz-result" hidden aria-live="polite"></div>
+</form>
+</div></section>
+</main>
+<footer class="portal-footer"><div class="portal-wrap"><strong>PORTAL DE ROBÓTICA &amp; INDÚSTRIA 4.0</strong><span>Automação • Sensores • Arduino • Robótica • IoT</span></div></footer>
+
+<script>
+const answers={1:'B',2:'A',3:'D',4:'E',5:'C',6:'B',7:'C',8:'A',9:'B',10:'D'};
+const form=document.getElementById('quizForm');
+const result=document.getElementById('quizResult');
+const answeredCount=document.getElementById('answeredCount');
+const progressBar=document.getElementById('progressBar');
+const questions=[...document.querySelectorAll('.question-card')];
+function updateProgress(){
+ const count=questions.filter(q=>q.querySelector('input:checked')).length;
+ answeredCount.textContent=count;
+ progressBar.style.width=(count/10*100)+'%';
+}
+form.addEventListener('change',updateProgress);
+form.addEventListener('submit',function(e){
+ e.preventDefault();
+ let score=0; const details=[];
+ questions.forEach(card=>{
+  const n=card.dataset.question; const selected=card.querySelector('input:checked'); const user=selected?selected.value:null; const correct=answers[n];
+  if(user===correct) score++;
+  details.push({n,user,correct,ok:user===correct});
+ });
+ const pct=score*10;
+ const unanswered=details.filter(x=>!x.user).length;
+ result.hidden=false;
+ result.innerHTML=`<div class="result-summary"><div><span>RESULTADO</span><strong>${score}/10</strong></div><div><span>APROVEITAMENTO</span><strong>${pct}%</strong></div>${unanswered?`<div><span>NÃO RESPONDIDAS</span><strong>${unanswered}</strong></div>`:''}</div><div class="result-title"><h2>${score===10?'Perfeito!':score>=7?'Muito bom!':score>=5?'Bom trabalho!':'Continue estudando!'}</h2><p>Confira abaixo quais respostas você acertou e quais precisava marcar.</p></div><div class="answer-review">${details.map(x=>`<article class="review-item ${x.ok?'correct':'wrong'}"><div class="review-badge">${x.n}</div><div><strong>${x.ok?'✓ Acertou':'✕ Errou'}</strong><p>Sua resposta: <b>${x.user||'Não respondida'}</b> · Resposta correta: <b>${x.correct}</b></p></div></article>`).join('')}</div>`;
+ result.scrollIntoView({behavior:'smooth',block:'start'});
+});
+document.getElementById('resetQuiz').addEventListener('click',()=>{
+ form.reset(); result.hidden=true; result.innerHTML=''; updateProgress(); window.scrollTo({top:0,behavior:'smooth'});
+});
+updateProgress();
+</script>
+</body>
+</html>
