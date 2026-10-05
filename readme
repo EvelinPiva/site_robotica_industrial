@@ -1,0 +1,109 @@
+# README — Portal de Robótica Industrial 4.0
+
+## Sobre o projeto
+
+O **Portal de Robótica Industrial 4.0** é um projeto desenvolvido com o objetivo de apresentar, de forma simples, visual e interativa, diferentes tipos de robôs utilizados na indústria e conceitos relacionados à automação e à Indústria 4.0.
+
+O portal reúne informações sobre os principais tipos de robôs industriais, além de conteúdos relacionados a Arduino, sensores, ESP e programação.
+
+## Conteúdos do portal
+
+O projeto apresenta páginas específicas para os seguintes robôs:
+
+* Robô Cartesiano
+* Robô SCARA
+* Robô Articulado
+* Robô Cilíndrico
+* Robô Delta
+* Robô Polar
+* Robô Colaborativo (Cobot)
+
+Cada página apresenta informações sobre o funcionamento, características, movimentos e aplicações do respectivo robô, acompanhadas de imagens ilustrativas.
+
+## Simulado
+
+O portal também possui uma página de **Simulado**, composta por 10 questões de múltipla escolha relacionadas a:
+
+* Arduino
+* Sensores
+* ESP32
+* Robótica
+* Codificação
+* Multímetro
+
+O usuário deve selecionar apenas uma alternativa por questão. Após enviar as respostas, o sistema apresenta:
+
+* Quantidade de acertos;
+* Porcentagem de aproveitamento;
+* Questões corretas;
+* Questões incorretas;
+* Alternativa selecionada;
+* Alternativa correta.
+
+Também é possível refazer o simulado.
+
+## Tecnologias utilizadas
+
+O projeto foi desenvolvido utilizando tecnologias web:
+
+* **HTML5** — estrutura das páginas;
+* **CSS3** — estilização, layout, responsividade e identidade visual;
+* **JavaScript** — interatividade e funcionamento do simulado;
+* **Imagens** — utilizadas para representar os diferentes modelos de robôs;
+* **Favicon** — identidade visual utilizada nas páginas do portal.
+
+## Estrutura do projeto
+
+```text
+Portal_Robotica_Industria_4_0/
+│
+├── index.html
+├── cartesiano.html
+├── scara.html
+├── articulado.html
+├── cilindrico.html
+├── delta.html
+├── polar.html
+├── colaborativo.html
+├── simulado.html
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   └── script.js
+│
+├── images/
+│   ├── cartesiano.*
+│   ├── scara.*
+│   ├── articulado.*
+│   ├── cilindrico.*
+│   ├── delta.*
+│   ├── polar.*
+│   ├── cobot.*
+│   └── favicon.*
+│
+└── README.md
+```
+
+## Objetivo
+
+O projeto busca demonstrar, de maneira prática e interativa, como diferentes tipos de robôs industriais funcionam e onde podem ser aplicados, relacionando esses conceitos com tecnologias presentes na **Indústria 4.0**.
+
+Além do conteúdo informativo, o simulado permite que o usuário teste seus conhecimentos de forma interativa.
+
+## Como executar
+
+Por utilizar HTML, CSS e JavaScript, o portal pode ser executado diretamente em um navegador.
+
+Basta abrir o arquivo:
+
+```text
+index.html
+```
+
+em um navegador como Google Chrome, Microsoft Edge ou Mozilla Firefox.
+
+## Autores
+
+Projeto acadêmico desenvolvido como parte dos estudos relacionados à **Robótica, Programação e Indústria 4.0**.
